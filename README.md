@@ -4,7 +4,7 @@ Testes automatizados E2E utilizando **Cypress** na aplicação **Automation Prac
 
 ## Tecnologias
 
-- **Node.js+**
+- **Node.js**
 - **Cypress**
 - **Faker.js**
 
