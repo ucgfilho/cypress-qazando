@@ -4,8 +4,9 @@ Testes automatizados E2E utilizando **Cypress** na aplicação **Automation Prac
 
 ## Tecnologias
 
-- **Node.js 20+**
-- **Cypress 15.7.1**
+- **Node.js+**
+- **Cypress**
+- **FakerJS**
 
 ## Instalação
 
@@ -35,11 +36,18 @@ cypress-qazando/
 │   ├── e2e/
 │   │   ├── cadastro.cy.js       — testes de cadastro
 │   │   └── login.cy.js          — testes de autenticação
-│   ├── fixtures/                — dados de teste
-│   ├── screenshots/             — capturas de falhas
-│   └── support/                 — comandos customizados
+│   ├── fixtures/                — dados de teste (fixtures)
+│   │   ├── user_invalid.json
+│   │   └── user_valid.json
+│   ├── screenshots/             — capturas de falhas geradas pelo Cypress
+│   │   ├── cadastro.cy.js/
+│   │   └── login.cy.js/
+│   └── support/                 — suporte e comandos customizados
+│       ├── commands.js
+│       └── e2e.js
 ├── cypress.config.js            — configuração principal
-└── package.json
+├── package.json
+└── README.md
 ```
 
 ## Funcionalidades testadas
