@@ -36,12 +36,14 @@ cypress-qazando/
 │   ├── e2e/
 │   │   ├── cadastro.cy.js       — testes de cadastro
 │   │   └── login.cy.js          — testes de autenticação
+│   ├── fixtures/
+│   │   └── resolutions.json     — resoluções/presets de viewport
 │   ├── screenshots/             — capturas de falhas geradas pelo Cypress
-│   │   ├── cadastro.cy.js/
-│   │   └── login.cy.js/
 │   └── support/                 — suporte e comandos customizados
-│       ├── commands.js
-│       └── e2e.js
+│       ├── e2e.js
+│       ├── homePageCommands.js
+│       ├── loginPageCommands.js
+│       └── registerPageCommands.js
 ├── cypress.config.js            — configuração principal
 ├── package.json
 └── README.md
