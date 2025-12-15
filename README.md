@@ -36,9 +36,6 @@ cypress-qazando/
 │   ├── e2e/
 │   │   ├── cadastro.cy.js       — testes de cadastro
 │   │   └── login.cy.js          — testes de autenticação
-│   ├── fixtures/                — dados de teste (fixtures)
-│   │   ├── user_invalid.json
-│   │   └── user_valid.json
 │   ├── screenshots/             — capturas de falhas geradas pelo Cypress
 │   │   ├── cadastro.cy.js/
 │   │   └── login.cy.js/
