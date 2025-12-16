@@ -120,4 +120,4 @@ npx cypress run --spec "cypress/e2e/features/**/*.feature"
 
 ## Licença
 
-MIT
+Este projeto está sob a licença MIT.
