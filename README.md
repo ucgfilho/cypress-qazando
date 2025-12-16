@@ -9,7 +9,8 @@ Suite de testes automatizados end-to-end para a aplicação [Automation Practice
 | Tecnologia | Versão | Finalidade |
 |------------|--------|------------|
 | Cypress | 15.7.1 | Framework de testes E2E |
-| Faker.js | 9.8.0 | Geração de dados dinâmicos |
+| Faker.js | 10.1.0 | Geração de dados dinâmicos |
+| Cucumber | 24.0.0 | BDD com Gherkin |
 | Node.js | 18+ | Runtime JavaScript |
 
 ---
@@ -20,59 +21,56 @@ Suite de testes automatizados end-to-end para a aplicação [Automation Practice
 cypress-qazando/
 ├── cypress/
 │   ├── e2e/
-│   │   ├── login.cy.js          # Testes de login
-│   │   └── register.cy.js       # Testes de cadastro
+│   │   ├── cadastro.cy.js
+│   │   ├── login.cy.js
+│   │   └── features/
+│   │       ├── cadastro.feature
+│   │       └── login.feature
 │   ├── fixtures/
-│   │   └── resolutions.json     # Configurações de viewport
+│   │   └── resolutions.json
 │   └── support/
-│       ├── commands/
-│       │   ├── loginCommands.js     # Comandos de login
-│       │   └── registerCommands.js  # Comandos de cadastro
-│       ├── elements/
-│       │   ├── loginElements.js     # Seletores de login
-│       │   └── registerElements.js  # Seletores de cadastro
-│       ├── commands.js
-│       └── e2e.js
+│       ├── e2e.js
+│       ├── homePageCommands.js
+│       ├── loginPageCommands.js
+│       ├── registerPageCommands.js
+│       └── step_definitions/
+│           ├── cadastroSteps.js
+│           └── loginSteps.js
 ├── cypress.config.js
 └── package.json
 ```
 
 ---
 
-## Padrão de Projeto
+## Padrões de Projeto
 
-**Page Object Pattern** implementado via Custom Commands do Cypress:
-
-- **Elements**: Centralização de seletores CSS
-- **Commands**: Ações reutilizáveis e asserções
-- **Specs**: Arquivos de teste organizados por funcionalidade
+- **Page Object Pattern**: Custom Commands organizados por página
+- **BDD (Behavior Driven Development)**: Cenários em Gherkin via Cucumber
 
 ---
 
-## Cenários de Teste
+## Funcionalidades
 
 ### Login
-| Cenário | Descrição |
-|---------|-----------|
-| Login válido | Autenticação com credenciais corretas |
-| Senha inválida | Validação de mensagem de erro |
-| E-mail inválido | Validação de formato de e-mail |
+| Cenário | Tipo |
+|---------|------|
+| Credenciais válidas | Sucesso |
+| E-mail inválido | Erro |
+| Senha inválida | Erro |
 
 ### Cadastro
-| Cenário | Descrição |
-|---------|-----------|
-| Cadastro completo | Registro com todos os campos válidos |
-| Sem nome | Validação de campo obrigatório |
-| Sem e-mail | Validação de campo obrigatório |
-| Sem senha | Validação de campo obrigatório |
-| E-mail inválido | Validação de formato |
-| Senha inválida | Validação de requisitos mínimos |
+| Cenário | Tipo |
+|---------|------|
+| Dados válidos | Sucesso |
+| Nome vazio | Erro |
+| E-mail vazio | Erro |
+| E-mail inválido | Erro |
+| Senha vazia | Erro |
+| Senha inválida | Erro |
 
 ---
 
 ## Testes Responsivos
-
-Todos os testes são executados em 4 resoluções:
 
 | Dispositivo | Resolução |
 |-------------|-----------|
@@ -86,13 +84,8 @@ Todos os testes são executados em 4 resoluções:
 ## Instalação
 
 ```bash
-# Clonar repositório
 git clone https://github.com/ucgfilho/cypress-qazando.git
-
-# Acessar diretório
 cd cypress-qazando
-
-# Instalar dependências
 npm install
 ```
 
@@ -101,30 +94,24 @@ npm install
 ## Execução
 
 ```bash
-# Modo interativo (Cypress UI)
+# Modo interativo
 npx cypress open
 
-# Modo headless (linha de comando)
+# Headless
 npx cypress run
 
-# Executar teste específico
+# Teste específico
 npx cypress run --spec "cypress/e2e/login.cy.js"
+
+# Apenas features BDD
+npx cypress run --spec "cypress/e2e/features/**/*.feature"
 ```
-
----
-
-## Diferenciais
-
-- **Dados dinâmicos**: Faker.js elimina dependência de dados fixos
-- **Cobertura responsiva**: Validação em múltiplos dispositivos
-- **Código escalável**: Estrutura modular para fácil manutenção
-- **Nomenclatura consistente**: Padrão claro em todo o projeto
 
 ---
 
 ## Autor
 
-Desenvolvido por **Ubirajara Filho**
+**Ubirajara Filho**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ucgfilho/)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ucgfilho)
@@ -133,4 +120,4 @@ Desenvolvido por **Ubirajara Filho**
 
 ## Licença
 
-Este projeto está sob a licença MIT.
+MIT
