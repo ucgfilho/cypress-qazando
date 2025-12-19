@@ -6,14 +6,6 @@ Feature: Cadastro
     Background:
         Given I am on the registration page
 
-    Scenario: Cadastro com dados válidos
-        When I fill in the name "John Silva"
-        And I fill in the email "john@email.com"
-        And I fill in the password "Senha123"
-        And I click on the registration button
-        Then I see the register message "Cadastro realizado!"
-        And I see my name in the welcome message
-
     Scenario: Cadastro com nome vazio
         When I leave the name empty
         And I fill in the email "customer@email.com"

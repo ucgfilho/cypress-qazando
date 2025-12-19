@@ -6,12 +6,12 @@ Suite de testes automatizados end-to-end para a aplicação [Automation Practice
 
 ## Tecnologias
 
-| Tecnologia | Versão | Finalidade |
-|------------|--------|------------|
-| Cypress | 15.7.1 | Framework de testes E2E |
-| Faker.js | 10.1.0 | Geração de dados dinâmicos |
-| Cucumber | 24.0.0 | BDD com Gherkin |
-| Node.js | 18+ | Runtime JavaScript |
+| Tecnologia | Versão | Finalidade                 |
+| ---------- | ------ | -------------------------- |
+| Cypress    | 15.8.0 | Framework de testes E2E    |
+| Faker.js   | 10.1.0 | Geração de dados dinâmicos |
+| Cucumber   | 24.0.0 | BDD com Gherkin            |
+| Node.js    | 18+    | Runtime JavaScript         |
 
 ---
 
@@ -30,9 +30,10 @@ cypress-qazando/
 │   │   └── resolutions.json
 │   └── support/
 │       ├── e2e.js
-│       ├── homePageCommands.js
-│       ├── loginPageCommands.js
-│       ├── registerPageCommands.js
+│       ├── pages/
+│       │   ├── homePage.js
+│       │   ├── loginPage.js
+│       │   └── registerPage.js
 │       └── step_definitions/
 │           ├── cadastroSteps.js
 │           └── loginSteps.js
@@ -52,32 +53,34 @@ cypress-qazando/
 ## Funcionalidades
 
 ### Login
-| Cenário | Tipo |
-|---------|------|
+
+| Cenário             | Tipo    |
+| ------------------- | ------- |
 | Credenciais válidas | Sucesso |
-| E-mail inválido | Erro |
-| Senha inválida | Erro |
+| E-mail inválido     | Erro    |
+| Senha inválida      | Erro    |
 
 ### Cadastro
-| Cenário | Tipo |
-|---------|------|
-| Dados válidos | Sucesso |
-| Nome vazio | Erro |
-| E-mail vazio | Erro |
-| E-mail inválido | Erro |
-| Senha vazia | Erro |
-| Senha inválida | Erro |
+
+| Cenário         | Tipo    |
+| --------------- | ------- |
+| Dados válidos   | Sucesso |
+| Nome vazio      | Erro    |
+| E-mail vazio    | Erro    |
+| E-mail inválido | Erro    |
+| Senha vazia     | Erro    |
+| Senha inválida  | Erro    |
 
 ---
 
 ## Testes Responsivos
 
-| Dispositivo | Resolução |
-|-------------|-----------|
-| iPhone XR | 414 x 896 |
-| iPad 2 | 768 x 1024 |
-| MacBook 16 | 1536 x 960 |
-| Desktop | 1920 x 1080 |
+| Dispositivo | Resolução   |
+| ----------- | ----------- |
+| iPhone XR   | 414 x 896   |
+| iPad 2      | 768 x 1024  |
+| MacBook 16  | 1536 x 960  |
+| Desktop     | 1920 x 1080 |
 
 ---
 

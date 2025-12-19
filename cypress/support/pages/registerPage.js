@@ -68,19 +68,22 @@ Cypress.Commands.add(
 // Valida erro de nome
 Cypress.Commands.add("validateNameError", () => {
   cy.get(el.messages.error)
-    .contains("O campo nome deve ser prenchido").should("be.visible");
+    .contains("O campo nome deve ser prenchido")
+    .should("be.visible");
 });
 
 // Valida erro de email
 Cypress.Commands.add("validateEmailError", () => {
   cy.get(el.messages.error)
-    .contains("O campo e-mail deve ser prenchido corretamente").should("be.visible");
+    .contains("O campo e-mail deve ser prenchido corretamente")
+    .should("be.visible");
 });
 
 // Valida erro de senha
 Cypress.Commands.add("validatePasswordError", () => {
   cy.get(el.messages.error)
-    .contains("O campo senha deve ter pelo menos 6 dígitos").should("be.visible");
+    .contains("O campo senha deve ter pelo menos 6 dígitos")
+    .should("be.visible");
 });
 
 // Valida cadastro realizado com sucesso

@@ -23,7 +23,6 @@ Given("I am on the registration page", () => {
 
 // Preenchimento de campos
 When("I fill in the name {string}", (name) => {
-  const currentName = name;
   cy.get(el.inputs.name).type(name);
 });
 

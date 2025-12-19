@@ -1,3 +1,4 @@
-import "./homePageCommands";
-import "./registerPageCommands";
-import "./loginPageCommands";
+import "./pages/homePage";
+import "./pages/registerPage";
+import "./pages/loginPage";
+import "cypress-mochawesome-reporter/register";
