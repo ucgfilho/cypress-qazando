@@ -1,0 +1,23 @@
+name: Pipeline Automation Practice
+
+# Será rodado apenas em pull requests para a branch main
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      # Clona o projeto
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      # Rodar testes
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
