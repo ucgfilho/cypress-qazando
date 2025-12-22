@@ -9,6 +9,7 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
 module.exports = defineConfig({
+  projectId: "okrn11",
   reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
     charts: true,

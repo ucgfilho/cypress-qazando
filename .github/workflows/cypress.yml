@@ -27,8 +27,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          install: false
-          browser: chrome
+          record: true
           config: video=true
 
       - uses: actions/upload-artifact@v4
