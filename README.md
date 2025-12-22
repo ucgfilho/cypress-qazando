@@ -21,7 +21,8 @@ Suite de testes automatizados end-to-end para a aplicação [Automation Practice
 cypress-qazando/
 ├── .github/
 │   └── workflows/
-│       └── cypress.yml              # Pipeline de CI/CD
+│       └── cypress.yml              # Pipeline de CI/CD (GitHub Actions)
+├── .gitignore                       # Arquivos ignorados pelo Git
 ├── cypress/
 │   ├── e2e/
 │   │   ├── cadastro.cy.js          # Testes de cadastro
@@ -32,7 +33,7 @@ cypress-qazando/
 │   ├── fixtures/
 │   │   └── resolutions.json         # Resoluções de tela
 │   ├── reports/
-│   │   └── html/                    # Relatórios gerados
+│   │   └── html/                    # Relatórios HTML gerados
 │   └── support/
 │       ├── e2e.js                   # Arquivo de configuração global
 │       ├── pages/                   # Page Objects
@@ -43,7 +44,9 @@ cypress-qazando/
 │           ├── cadastroSteps.js     # Steps de cadastro
 │           └── loginSteps.js        # Steps de login
 ├── cypress.config.js                # Configurações do Cypress
-└── package.json                     # Dependências do projeto
+├── package.json                     # Dependências do projeto
+├── package-lock.json                # Lock de dependências
+└── README.md                        # Documentação do projeto
 ```
 
 ---
@@ -62,10 +65,17 @@ O projeto conta com uma pipeline de Integração Contínua configurada no GitHub
 > **Nota**: Este projeto está integrado ao Cypress Cloud. Para rodar os testes em seu próprio fork/ambiente de CI, certifique-se de configurar seu próprio projectId no arquivo de configuração ou desativar o parâmetro --record no arquivo YAML.
 
 - **Workflow**: `.github/workflows/cypress.yml`
+- **Integração**: Cypress Cloud com projectId
+- **Acionador**: Pull Requests para a branch
+- **Ambiente**: Ubuntu, Node.js 20
 - **Jobs**:
+  - Checkout do código
+  - Setup Node.js com cache npm
   - Instalação de dependências
-  - Execução dos testes E2E (Chrome)
-  - Geração de artefatos (vídeos e screenshots em caso de falha)
+  - Execução dos testes E2E com gravação
+  - Upload de artefatos (relatórios e vídeos)
+
+> **Configuração de Secrets**: Configure `CYPRESS_RECORD_KEY` nas configurações do repositório no GitHub para gravar os testes no Cypress Cloud.
 
 ---
 
