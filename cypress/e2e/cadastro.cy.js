@@ -1,4 +1,6 @@
 import { faker } from "@faker-js/faker";
+import homePage from "../support/pages/homePage";
+import registerPage from "../support/pages/registerPage";
 const resolutions = require("../fixtures/resolutions.json");
 
 resolutions.forEach((resolution) => {
@@ -14,37 +16,37 @@ resolutions.forEach((resolution) => {
         cy.viewport(resolution);
       }
 
-      cy.accessRegisterPage();
+      homePage.accessRegisterPage();
     });
 
     it("Cadastro com nome vazio", () => {
-      cy.registerWithoutName(email, password);
-      cy.validateNameError();
+      registerPage.registerWithoutName(email, password);
+      registerPage.validateNameError();
     });
 
     it("Cadastro com e-mail vazio", () => {
-      cy.registerWithoutEmail(name, password);
-      cy.validateEmailError();
+      registerPage.registerWithoutEmail(name, password);
+      registerPage.validateEmailError();
     });
 
     it("Cadastro com e-mail inválido", () => {
-      cy.registerWithInvalidEmail(name, invalidEmail, password);
-      cy.validateEmailError();
+      registerPage.registerWithInvalidEmail(name, invalidEmail, password);
+      registerPage.validateEmailError();
     });
 
     it("Cadastro com senha vazia", () => {
-      cy.registerWithoutPassword(name, email);
-      cy.validatePasswordError();
+      registerPage.registerWithoutPassword(name, email);
+      registerPage.validatePasswordError();
     });
 
     it("Cadastro com senha inválida", () => {
-      cy.registerWithInvalidPassword(name, email, passwordInvalid);
-      cy.validatePasswordError();
+      registerPage.registerWithInvalidPassword(name, email, passwordInvalid);
+      registerPage.validatePasswordError();
     });
 
     it("Cadastro efetuado com sucesso", () => {
-      cy.registerSuccessful(name, email, password);
-      cy.validateRegister(name);
+      registerPage.registerSuccessful(name, email, password);
+      registerPage.validateRegister(name);
     });
   });
 });

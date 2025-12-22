@@ -1,4 +1,6 @@
 import { faker } from "@faker-js/faker";
+import homePage from "../support/pages/homePage";
+import loginPage from "../support/pages/loginPage";
 const resolutions = require("../fixtures/resolutions.json");
 
 resolutions.forEach((resolution) => {
@@ -13,22 +15,22 @@ resolutions.forEach((resolution) => {
         cy.viewport(resolution);
       }
 
-      cy.accessLoginPage();
+      homePage.accessLoginPage();
     });
 
     it("Login com credenciais válidas", () => {
-      cy.loginSuccessful(email, password);
-      cy.validateLoginSuccessful(email);
+      loginPage.loginSuccessful(email, password);
+      loginPage.validateLoginSuccessful(email);
     });
 
     it("Login com senha inválida", () => {
-      cy.loginWithInvalidPassword(email, passwordInvalid);
-      cy.validateInvalidPassword();
+      loginPage.loginWithInvalidPassword(email, passwordInvalid);
+      loginPage.validateInvalidPassword();
     });
 
     it("Login com email inválido", () => {
-      cy.loginWithInvalidEmail(invalidEmail, password);
-      cy.validateInvalidEmail();
+      loginPage.loginWithInvalidEmail(invalidEmail, password);
+      loginPage.validateInvalidEmail();
     });
   });
 });
