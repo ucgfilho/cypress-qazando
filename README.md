@@ -1,10 +1,10 @@
 # Cypress QAzando - Automação de Testes E2E
 
-Suite de testes automatizados end-to-end para a aplicação [Automation Practice](https://automationpratice.com.br/) da Qazando.
+Suite de testes automatizados end-to-end para a aplicação [Automation Practice](https://automationpratice.com.br/) da Qazando, com suporte a testes responsivos e múltiplos formatos (JavaScript e BDD).
 
 ---
 
-## Tecnologias
+## 🚀 Tecnologias
 
 | Tecnologia | Versão | Finalidade                 |
 | ---------- | ------ | -------------------------- |
@@ -19,26 +19,31 @@ Suite de testes automatizados end-to-end para a aplicação [Automation Practice
 
 ```
 cypress-qazando/
+├── .github/
+│   └── workflows/
+│       └── cypress.yml              # Pipeline de CI/CD
 ├── cypress/
 │   ├── e2e/
-│   │   ├── cadastro.cy.js
-│   │   ├── login.cy.js
-│   │   └── features/
-│   │       ├── cadastro.feature
-│   │       └── login.feature
+│   │   ├── cadastro.cy.js          # Testes de cadastro (JavaScript)
+│   │   ├── login.cy.js              # Testes de login (JavaScript)
+│   │   └── features/                # Cenários BDD
+│   │       ├── cadastro.feature     # Feature de cadastro
+│   │       └── login.feature        # Feature de login
 │   ├── fixtures/
-│   │   └── resolutions.json
+│   │   └── resolutions.json         # Resoluções de tela
+│   ├── reports/
+│   │   └── html/                    # Relatórios gerados
 │   └── support/
-│       ├── e2e.js
-│       ├── pages/
-│       │   ├── homePage.js
-│       │   ├── loginPage.js
-│       │   └── registerPage.js
-│       └── step_definitions/
-│           ├── cadastroSteps.js
-│           └── loginSteps.js
-├── cypress.config.js
-└── package.json
+│       ├── e2e.js                   # Arquivo de configuração global
+│       ├── pages/                   # Page Objects
+│       │   ├── homePage.js          # Comandos de navegação
+│       │   ├── loginPage.js         # Comandos de login
+│       │   └── registerPage.js      # Comandos de cadastro
+│       └── step_definitions/        # Steps do Cucumber
+│           ├── cadastroSteps.js     # Steps de cadastro
+│           └── loginSteps.js        # Steps de login
+├── cypress.config.js                # Configurações do Cypress
+└── package.json                     # Dependências do projeto
 ```
 
 ---
@@ -47,6 +52,20 @@ cypress-qazando/
 
 - **Page Object Pattern**: Custom Commands organizados por página
 - **BDD (Behavior Driven Development)**: Cenários em Gherkin via Cucumber
+
+---
+
+## CI/CD com GitHub Actions
+
+O projeto conta com uma pipeline de Integração Contínua configurada no GitHub Actions, que é executada a cada Pull Request.
+
+> **Nota**: Para que a pipeline funcione corretamente com o Cypress Cloud, é necessário configurar a secret `CYPRESS_RECORD_KEY` nas configurações do repositório e ter uma conta ativa no Cypress Cloud.
+
+- **Workflow**: `.github/workflows/cypress.yml`
+- **Jobs**:
+  - Instalação de dependências
+  - Execução dos testes E2E (Chrome)
+  - Geração de artefatos (vídeos e screenshots em caso de falha)
 
 ---
 
