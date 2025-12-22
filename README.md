@@ -59,7 +59,7 @@ cypress-qazando/
 
 O projeto conta com uma pipeline de Integração Contínua configurada no GitHub Actions, que é executada a cada Pull Request.
 
-> **Nota**: Para que a pipeline funcione corretamente com o Cypress Cloud, é necessário configurar a secret `CYPRESS_RECORD_KEY` nas configurações do repositório e ter uma conta ativa no Cypress Cloud.
+> **Nota**: Este projeto está integrado ao Cypress Cloud. Para rodar os testes em seu próprio fork/ambiente de CI, certifique-se de configurar seu próprio projectId no arquivo de configuração ou desativar o parâmetro --record no arquivo YAML.
 
 - **Workflow**: `.github/workflows/cypress.yml`
 - **Jobs**:
