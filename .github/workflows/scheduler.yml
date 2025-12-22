@@ -1,4 +1,4 @@
-name: Pipeline Automation Practice
+name: Pipeline Automation Practice - Scheduler
 
 # Será rodado apenas em pull requests para a branch main
 on:
