@@ -8,9 +8,8 @@ const {
   createEsbuildPlugin,
 } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
 
-projectId: "okrn11",
-
 module.exports = defineConfig({
+  projectId: "okrn11",
   reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
     charts: true,
