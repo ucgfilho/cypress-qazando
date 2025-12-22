@@ -24,8 +24,8 @@ cypress-qazando/
 │       └── cypress.yml              # Pipeline de CI/CD
 ├── cypress/
 │   ├── e2e/
-│   │   ├── cadastro.cy.js          # Testes de cadastro (JavaScript)
-│   │   ├── login.cy.js              # Testes de login (JavaScript)
+│   │   ├── cadastro.cy.js          # Testes de cadastro
+│   │   ├── login.cy.js              # Testes de login
 │   │   └── features/                # Cenários BDD
 │   │       ├── cadastro.feature     # Feature de cadastro
 │   │       └── login.feature        # Feature de login
