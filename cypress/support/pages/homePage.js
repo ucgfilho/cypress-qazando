@@ -1,31 +1,31 @@
-// Elementos
-const el = {
-  buttons: {
-    accessRegister: ".fa-lock",
-    accessLogin: ".fa-user",
-  },
-  pages: {
-    register: ".account_form",
-    login: ".account_form",
-  },
-};
+class HomePage {
+  // Elementos
+  elements = {
+    buttons: {
+      accessRegister: () => cy.get(".fa-lock"),
+      accessLogin: () => cy.get(".fa-user"),
+    },
+    pages: {
+      register: () => cy.get(".account_form"),
+      login: () => cy.get(".account_form"),
+    },
+  };
 
-// Acessa página de cadastro
-Cypress.Commands.add("accessRegisterPage", () => {
-  // Acessa a home e clica no botão de cadastro
-  cy.visit("/");
-  cy.get(el.buttons.accessRegister).click();
+  // Acessa página de cadastro
+  accessRegisterPage() {
+    cy.visit("/");
+    this.elements.buttons.accessRegister().click();
+    this.elements.pages
+      .register()
+      .should("contain.text", "Cadastro de usuário");
+  }
 
-  // Verifica se está na página de cadastro
-  cy.get(el.pages.register).should("contain.text", "Cadastro de usuário");
-});
+  // Acessa página de login
+  accessLoginPage() {
+    cy.visit("/");
+    this.elements.buttons.accessLogin().click();
+    this.elements.pages.login().should("contain.text", "Login");
+  }
+}
 
-// Acessa página de login
-Cypress.Commands.add("accessLoginPage", () => {
-  // Acessa a home e clica no botão de login
-  cy.visit("/");
-  cy.get(el.buttons.accessLogin).click();
-
-  // Verifica se está na página de login
-  cy.get(el.pages.login).should("contain.text", "Login");
-});
+export default new HomePage();

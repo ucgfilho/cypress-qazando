@@ -1,20 +1,7 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { faker } from "@faker-js/faker";
-
-// Elementos
-const el = {
-  inputs: {
-    email: "#user",
-    password: "#password",
-  },
-  buttons: {
-    login: "#btnLogin",
-  },
-  messages: {
-    error: ".invalid_input",
-    success: ".swal2-popup",
-  },
-};
+import homePage from "../pages/homePage";
+import loginPage from "../pages/loginPage";
 
 const validEmail = faker.internet.email();
 const validPassword = faker.internet.password(6);
@@ -23,29 +10,29 @@ const invalidPassword = faker.string.alphanumeric(5);
 
 // Background
 Given("I am on the login page", () => {
-  cy.accessLoginPage();
+  homePage.accessLoginPage();
 });
 
 // Preenchimento de campos
 When("I fill a valid email", () => {
-  cy.get(el.inputs.email).type(validEmail);
+  loginPage.fillEmail(validEmail);
 });
 
 When("I fill a valid password", () => {
-  cy.get(el.inputs.password).type(validPassword);
+  loginPage.fillPassword(validPassword);
 });
 
 When("I fill an invalid email", () => {
-  cy.get(el.inputs.email).type(invalidEmail);
+  loginPage.fillEmail(invalidEmail);
 });
 
 When("I fill an invalid password", () => {
-  cy.get(el.inputs.password).type(invalidPassword);
+  loginPage.fillPassword(invalidPassword);
 });
 
 // Ação
 When("I click on the login button", () => {
-  cy.get(el.buttons.login).click();
+  loginPage.clickLoginButton();
 });
 
 // Validações

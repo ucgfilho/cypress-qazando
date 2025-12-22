@@ -1,95 +1,117 @@
-// Elementos
-const el = {
-  inputs: {
-    name: "#user",
-    email: "#email",
-    password: "#password",
-  },
-  buttons: {
-    register: "#btnRegister",
-  },
-  messages: {
-    error: "#errorMessageFirstName",
-    success: ".swal2-popup",
-  },
-};
+class RegisterPage {
+  // Elementos
+  elements = {
+    inputs: {
+      name: () => cy.get("#user"),
+      email: () => cy.get("#email"),
+      password: () => cy.get("#password"),
+    },
+    buttons: {
+      register: () => cy.get("#btnRegister"),
+    },
+    messages: {
+      error: () => cy.get("#errorMessageFirstName"),
+      success: () => cy.get(".swal2-popup"),
+    },
+  };
 
-// Cadastro válido
-Cypress.Commands.add("registerSuccessful", (name, email, password) => {
-  cy.get(el.inputs.name).type(name);
-  cy.get(el.inputs.email).type(email);
-  cy.get(el.inputs.password).type(password);
-  cy.get(el.buttons.register).click();
-});
-
-// Cadastro sem nome
-Cypress.Commands.add("registerWithoutName", (email, password) => {
-  cy.get(el.inputs.email).type(email);
-  cy.get(el.inputs.password).type(password);
-  cy.get(el.buttons.register).click();
-});
-
-// Cadastro sem email
-Cypress.Commands.add("registerWithoutEmail", (name, password) => {
-  cy.get(el.inputs.name).type(name);
-  cy.get(el.inputs.password).type(password);
-  cy.get(el.buttons.register).click();
-});
-
-// Cadastro com email inválido
-Cypress.Commands.add(
-  "registerWithInvalidEmail",
-  (name, invalidEmail, password) => {
-    cy.get(el.inputs.name).type(name);
-    cy.get(el.inputs.email).type(invalidEmail);
-    cy.get(el.inputs.password).type(password);
-    cy.get(el.buttons.register).click();
+  // Preenche nome
+  fillName(name) {
+    this.elements.inputs.name().type(name);
   }
-);
 
-// Cadastro sem senha
-Cypress.Commands.add("registerWithoutPassword", (name, email) => {
-  cy.get(el.inputs.name).type(name);
-  cy.get(el.inputs.email).type(email);
-  cy.get(el.buttons.register).click();
-});
-
-// Cadastro com senha inválida
-Cypress.Commands.add(
-  "registerWithInvalidPassword",
-  (name, email, passwordInvalid) => {
-    cy.get(el.inputs.name).type(name);
-    cy.get(el.inputs.email).type(email);
-    cy.get(el.inputs.password).type(passwordInvalid);
-    cy.get(el.buttons.register).click();
+  // Preenche e-mail
+  fillEmail(email) {
+    this.elements.inputs.email().type(email);
   }
-);
 
-// Valida erro de nome
-Cypress.Commands.add("validateNameError", () => {
-  cy.get(el.messages.error)
-    .contains("O campo nome deve ser prenchido")
-    .should("be.visible");
-});
+  // Preenche senha
+  fillPassword(password) {
+    this.elements.inputs.password().type(password);
+  }
 
-// Valida erro de email
-Cypress.Commands.add("validateEmailError", () => {
-  cy.get(el.messages.error)
-    .contains("O campo e-mail deve ser prenchido corretamente")
-    .should("be.visible");
-});
+  // Clica no botão de cadastro
+  clickRegisterButton() {
+    this.elements.buttons.register().click();
+  }
 
-// Valida erro de senha
-Cypress.Commands.add("validatePasswordError", () => {
-  cy.get(el.messages.error)
-    .contains("O campo senha deve ter pelo menos 6 dígitos")
-    .should("be.visible");
-});
+  // Cadastro válido
+  registerSuccessful(name, email, password) {
+    this.fillName(name);
+    this.fillEmail(email);
+    this.fillPassword(password);
+    this.clickRegisterButton();
+  }
 
-// Valida cadastro realizado com sucesso
-Cypress.Commands.add("validateRegister", (name) => {
-  cy.get(el.messages.success)
-    .should("be.visible")
-    .and("contain", "Cadastro realizado!")
-    .and("contain", "Bem-vindo " + name);
-});
+  // Cadastro sem nome
+  registerWithoutName(email, password) {
+    this.fillEmail(email);
+    this.fillPassword(password);
+    this.clickRegisterButton();
+  }
+
+  // Cadastro sem email
+  registerWithoutEmail(name, password) {
+    this.fillName(name);
+    this.fillPassword(password);
+    this.clickRegisterButton();
+  }
+
+  // Cadastro com email inválido
+  registerWithInvalidEmail(name, invalidEmail, password) {
+    this.fillName(name);
+    this.fillEmail(invalidEmail);
+    this.fillPassword(password);
+    this.clickRegisterButton();
+  }
+
+  // Cadastro sem senha
+  registerWithoutPassword(name, email) {
+    this.fillName(name);
+    this.fillEmail(email);
+    this.clickRegisterButton();
+  }
+
+  // Cadastro com senha inválida
+  registerWithInvalidPassword(name, email, passwordInvalid) {
+    this.fillName(name);
+    this.fillEmail(email);
+    this.fillPassword(passwordInvalid);
+    this.clickRegisterButton();
+  }
+
+  // Valida erro de nome
+  validateNameError() {
+    this.elements.messages
+      .error()
+      .contains("O campo nome deve ser prenchido")
+      .should("be.visible");
+  }
+
+  // Valida erro de email
+  validateEmailError() {
+    this.elements.messages
+      .error()
+      .contains("O campo e-mail deve ser prenchido corretamente")
+      .should("be.visible");
+  }
+
+  // Valida erro de senha
+  validatePasswordError() {
+    this.elements.messages
+      .error()
+      .contains("O campo senha deve ter pelo menos 6 dígitos")
+      .should("be.visible");
+  }
+
+  // Valida cadastro realizado com sucesso
+  validateRegister(name) {
+    this.elements.messages
+      .success()
+      .should("be.visible")
+      .and("contain", "Cadastro realizado!")
+      .and("contain", "Bem-vindo " + name);
+  }
+}
+
+export default new RegisterPage();
