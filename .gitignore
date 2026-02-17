@@ -1,6 +1,10 @@
 # Dependências
 node_modules/
 
+# Pastas de IDEs
+.idea/
+.vscode/
+
 # Cypress
 cypress/videos/
 cypress/screenshots/
